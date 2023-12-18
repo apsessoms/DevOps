@@ -54,8 +54,11 @@ Replace <resource-group-name> with the name of your Azure resource group where y
 ## Step 7: Verify the Deployment
 
 - Once the deployment is successful, you can verify it by going to the Azure portal or should see a similar message in the terminal:
-![Alt text](image.png)
-![Alt text](image-1.png)
+  
+![image](https://github.com/apsessoms/DevOps/assets/99392512/e4c8caed-23e2-4e47-9916-d5dab1fb65b0)
+
+![image](https://github.com/apsessoms/DevOps/assets/99392512/9d03159d-4f0e-44c2-a968-abf92c98e718)
+
 
 ## Step 8: Clean Up (Optional)
 
