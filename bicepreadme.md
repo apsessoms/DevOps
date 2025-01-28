@@ -61,6 +61,7 @@ New-AzResourceGroupDeployment -TemplateFile main.bicep
 You can verify your deployment by checking the Azure portal.
 
 ![Alt Text](https://i.imgur.com/seREQzD.png)
+
 Notice that the App Service, App Service Plan, and Storage account were deployed together in the same region as declared in the Bicep template file. 
 
 ## Common troubleshooting tips 🛠   
