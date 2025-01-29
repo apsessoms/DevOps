@@ -1,8 +1,24 @@
+param location string = 'eastus2'
+param storageAccountName string = 'ecomapp${uniqueString(resourceGroup().id)}'
+param appServiceAppName string ='ecomapp${uniqueString(resourceGroup().id)}'
+
+@allowed([
+  'nonprod'
+  'prod'
+])
+param environmentType string 
+
+
+var appServicePlanName ='ecommerce-launch-server-plan'
+var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'
+var appServicePlanSkuName = (environmentType == 'prod') ? 'P2v3' : 'F1'
+
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01'={
-  name: 'penderecommercestorag2'
-  location: 'eastus2'
+  name: storageAccountName
+  location: location
   sku: {
-    name: 'Standard_LRS'
+    name: storageAccountSkuName
   }
   kind: 'StorageV2'
   properties: {
@@ -11,18 +27,20 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01'={
 }
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
-  name: 'ecommerce-launch-server-plan'
-  location: 'eastus2'
+  name: appServicePlanName
+  location: location
   sku: {
-    name: 'F1'
+    name: appServicePlanSkuName
   }
 }
 
 resource AppServiceApp 'Microsoft.Web/sites@2024-04-01' ={
-  name: 'ecommerce-launch-app'
-  location: 'eastus2'
+  name: appServiceAppName
+  location: location
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
   }
 }
+
+
