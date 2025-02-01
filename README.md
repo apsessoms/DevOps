@@ -1,5 +1,5 @@
 # DevOps
-Contains bicep templates, ARM templates, &amp; more...
+This repository is a collection of Azure Bicep code templates and guides to help you get started with Infrastructure as Code (IaC) using Bicep. The goal is to provide you with a set of resources that you can use to deploy Azure resources in a consistent, repeatable, and automated way. ✅
 
 # 🦾 Azure Bicep 
 
@@ -33,5 +33,6 @@ Azure Bicep Modules allow you to encapsulate and reuse your code which in return
 + **Versioning:** If you're sharing your modules across multiple projects or teams, consider versioning them. This allows you to make changes without breaking existing users of the module.
 
 ## Contributions 
-- The **vnet.md walkthrough** guide provides step-by-step instructions on deploying a basic Virtual Network (VNet) in Microsoft Azure using a BICEP template and Visual Studio Code, ensuring a clear and straightforward process for setting up network infrastructure. It covers the installation of required tools, writing BICEP code, deploying the template, and optional cleanup steps, all with the aim of creating a functional VNet in Azure.
-- The **CreateStorageAcc&VnetREADME.md** provides guidance on how to deploy a simple virtual network (VNET) using a BICEP file. 
+- The [vnet.md walkthrough](./vnet.md) guide provides step-by-step instructions on deploying a basic Virtual Network (VNet) in Microsoft Azure using a BICEP template and Visual Studio Code, ensuring a clear and straightforward process for setting up network infrastructure. It covers the installation of required tools, writing BICEP code, deploying the template, and optional cleanup steps, all with the aim of creating a functional VNet in Azure.
+- The [CreateStorageAcc&VnetREADME](./CreateStorageAcct&VnetREADME.md) provides guidance on how to deploy a simple virtual network (VNET) using a BICEP file. 
+- The [Bicep README](./bicepreadme.md) will provide you with a step by step guide on deploying a web app with dependencies using Bicep. 
