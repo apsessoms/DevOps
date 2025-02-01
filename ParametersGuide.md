@@ -1,5 +1,5 @@
 # Parameters and Variables in Bicep Templates
-*This guide is building off the [Bicep Fundamentals](./bicepreadme.md) guide that introduces you to the basics of Bicep and creates a <em>main.bicep</em> file. 
+*This guide is building off the [Bicep Readme](./bicepreadme.md) guide that introduces you to the basics of Bicep and creates a <em>main.bicep</em> file. 
 
 ## Enhance Flexibility with Parameters and Variables
 
