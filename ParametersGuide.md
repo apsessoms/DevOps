@@ -146,3 +146,7 @@ You have succesfully validated and deployed your Bicep file with parameters and 
 ## Conclusion
 
 Understanding how to use parameters and variables effectively in Bicep templates can greatly enhance the flexibility and maintainability of your Azure resource deployments.
+
++ Use templates with parameters for values that might change between deployments.
++ Variables have the same value, so they don't really change between deployments. 
+```+ param siteName string = 'mysite-${uniqueString(resourceGroup().id)}'``` shows that when a template is deployed to the same RG in the same subscription over and over again, the siteName parameters default value will always be the same. The only thing that will change will be a few characters at the end of the name. 
