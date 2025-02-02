@@ -26,21 +26,13 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01'={
   }
 }
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
-  name: appServicePlanName
-  location: location
-  sku: {
-    name: appServicePlanSkuName
+module appService 'modules/appService.bicep' = {
+  name: 'appService'
+  params: {
+    location: location
+    appServiceAppName: appServiceAppName
+    environmentType: environmentType
   }
 }
 
-resource AppServiceApp 'Microsoft.Web/sites@2024-04-01' ={
-  name: appServiceAppName
-  location: location
-  properties: {
-    serverFarmId: appServicePlan.id
-    httpsOnly: true
-  }
-}
-
-
+output appServiceAppHostName string = appService.outputs.appServiceAppHostName
