@@ -33,6 +33,9 @@ Azure Bicep Modules allow you to encapsulate and reuse your code which in return
 + **Versioning:** If you're sharing your modules across multiple projects or teams, consider versioning them. This allows you to make changes without breaking existing users of the module.
 
 ## Contributions 
+- The [BicepReadMe](./bicepreadme.md) provides a guide on how to deploy a web app with dependencies using Bicep.
+- The [Parameters Guide](./ParametersGuide.md) breaks down how to use parameters, variables, default values, and how to deploy your template using the ```what-if``` command. It also contains some more advanced topics. Check it out!
+- The [Modules Guide](./Modulesreadme.md) goes through how to use them to create smaller, reusable templates.
+- The [Reusable Template](./ReusableTemplate.md) guide will go over objects, tags, and arrays. It will also show you how to restrict values for various parameters. This is helpful if you need to implement naming conventions or other restrictions.
 - The [vnet.md walkthrough](./vnet.md) guide provides step-by-step instructions on deploying a basic Virtual Network (VNet) in Microsoft Azure using a BICEP template and Visual Studio Code, ensuring a clear and straightforward process for setting up network infrastructure. It covers the installation of required tools, writing BICEP code, deploying the template, and optional cleanup steps, all with the aim of creating a functional VNet in Azure.
 - The [CreateStorageAcc&VnetREADME](./CreateStorageAcct&VnetREADME.md) provides guidance on how to deploy a simple virtual network (VNET) using a BICEP file. 
-- The [Bicep README](./bicepreadme.md) will provide you with a step by step guide on deploying a web app with dependencies using Bicep. 
