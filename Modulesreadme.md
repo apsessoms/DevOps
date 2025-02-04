@@ -126,3 +126,4 @@ The ```what-if``` command lets you preview what changes a Bicep template will ma
 ![Alt Text](https://i.imgur.com/VZiZtAJ.png)
 
 You can see next to outputs that the app ServiceAppHostName was created and is named "ecomappv3w24tmhx5whg.azurewebsites.net" This was a result of adding ```output appServiceAppHostName string = appServiceApp.properties.defaultHostName```  to the bottom of the appService.bicep file.
+
