@@ -1,0 +1,34 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "appServicePlanSku": {
+        "value": {
+          "name": "F1",
+          "tier": "Free"
+        }
+      },
+      "sqlDatabaseSku": {
+        "value": {
+          "name": "Standard",
+          "tier": "Standard"
+        }
+      },
+      "sqlServerAdministrativeLogin": {
+        "reference": {
+            "keyVault": {
+                "id": "/subscriptions/7c262e39-cbd1-4035-bc14-3b8fcd7e8da6/resourceGroups/homelab-webapp-eastus-rg/providers/Microsoft.KeyVault/vaults/homelabeukv"
+            },
+            "secretName": "sqlServerAdministrativeLogin"
+        }
+      },
+      "sqlServerAdministrativePassword": {
+        "reference": {
+            "keyVault": {
+                "id": "/subscriptions/7c262e39-cbd1-4035-bc14-3b8fcd7e8da6/resourceGroups/homelab-webapp-eastus-rg/providers/Microsoft.KeyVault/vaults/homelabeukv"
+            },
+            "secretName": "sqlServerAdministrativePassword"
+        }
+      }
+    }
+  }

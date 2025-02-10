@@ -219,3 +219,5 @@ You can see from the output that the deployment was successful. Under the parame
 + Limit input value with ```@minValue()``` and ```@maxValue()```. (instance count)
 + Allowed values for ```environmentName``` (dev or prod)
   + Be careful with ```@allowed decorator``` as it can block deployments if you don't keep up with the list.
+
+Next up, we will group resources rogether using [Modules](./Modulesreadme.md).

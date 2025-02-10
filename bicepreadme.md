@@ -75,4 +75,6 @@ If you run into issues during deployment, check the following:
 As always, you can go to Azure monitor to check the logs for more information on what went wrong during deployment.
 
 ## Conclusion 
+In this guide, you learned how to deploy a web app with dependencies using Bicep. You also learned how to troubleshoot common issues that may arise during deployment.
 
+Next up we will be adding parameters to the Bicep file to make it more dynamic and reusable. [Check it out!](./ParametersGuide.md)
