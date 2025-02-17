@@ -36,7 +36,7 @@ param sqlServerAdministratorLoginPassword string
 ```
 ###  Add a Module declaration to loop over the regions
 
-```
+```bicep
 module databases 'modules/database.bicep' = [for location in locations: {
   name: 'database-${location}'
   params: {
@@ -57,7 +57,7 @@ module databases 'modules/database.bicep' = [for location in locations: {
 ## Verify database file
 Ensure that your ```database.bicep``` file has the following code:
 
-```
+```bicep
 @description('Azure region for deployment.')
 param location string
 
