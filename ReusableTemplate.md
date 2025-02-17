@@ -25,7 +25,7 @@ Parameters can be configured to retrieve sensitive data like passwords, certific
 
 ## Parameters 
 
-```
+```bicep
 param environmentName string 
 ````
 + **"param"** tells bicep you're declaring a parameter.
@@ -46,7 +46,7 @@ param environmentName string
 ## Objects ⏹️
 In bicep, object parameters can hold multiple values together in one place. You can make it optional by giving it a **default value** which means that if you don't provide one, Azure will. ☁️
 
-```
+```bicep
 param storageConfig object = {
   name: 'mystorage'
   sku: 'Standard_LRS'
@@ -56,7 +56,7 @@ param storageConfig object = {
 ## Tags 🏷️
 Tags are a special type of object that can be used to add metadata to resources. You will usually use different tags for each environment, but best practice is to reuse same tag values on all resources within your template. 
 
-```
+```bicep
 param resourceTags object = {
     EnvironmentName: 'Prod'
     CostCenter: '100'
@@ -66,7 +66,7 @@ param resourceTags object = {
 
 Whenever you define a resource in your Bicep file, you can reuse it wherever you want define the **tags** property. 
 
-```
+```bicep
 resource appServiceApp 'Microsoft.Web/sites@2020-06-01' = {
   name: appServiceAppName
   location: location
@@ -80,7 +80,7 @@ resource appServiceApp 'Microsoft.Web/sites@2020-06-01' = {
 
 ## Arrays 📝
 An array is a list of items & you might use an array of string values to declare a list of storage account locations.
-```
+```bicep
 param cosmosDBAccountLocations array = [
   {
     locationName: 'australiaeast'
@@ -95,7 +95,7 @@ param cosmosDBAccountLocations array = [
 ```
 When you declare your Storage Account resource, you can reference the array parameter to set the location property. 
 
-```
+```bicep
 resource account 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' = {
   name: accountName
   location: location
@@ -108,7 +108,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' = {
 ## Allowed values ✅
 In order to stay within a certain budget, you might decide that your App Service plans should only be deployed with a certain pricing tier. To enforce this, you use the ```@allowed``` parameter <strong> decorator</strong>. This is an example of how to restrict the pricing tier to only three options:
 
-```
+```bicep
 @allowed([
   'P1v3'
   'P2v3'
@@ -123,7 +123,7 @@ Use @minLength and @maxLength to enforce a minimum and maximum length for a para
 
 For example, you can enforce a minimum length of 4 characters and a maximum length of 24 characters for a storage account name:
 
-``` 
+```bicep
 @minLength(5)
 @maxLength(24)
 param storageAccountName string
@@ -132,7 +132,7 @@ param storageAccountName string
 ## How do I remember all this? 🤔
 Add descriptions to parameters! This is a good practice to help users understand what the parameter is for and what values are allowed. The @description decorator makes it easy to leave comments about a parameter in human-readable form.  
 
-```
+```bicep
 @description('The name of the storage account. Must be globally unique.')
 param storageAccountName string
 
@@ -174,7 +174,7 @@ The variables you defined will create the names of the Azure App Service Plan an
 
 Under the environmentName parameter, add the following code to restrict the values to only "dev" and "prod". See above for example. Also, add an @description decorator to explain what the parameter is for.
 
-```
+```bicep
 @allowed([
   'dev'
   'prod'

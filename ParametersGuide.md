@@ -88,7 +88,7 @@ String interpolation lets you combine text and dynamic values in Bicep. This hel
 
 ## Dev vs Prod
 You can require users to choose between a dev environment and a prod environment when deploying:
-```
+```bicep
 @allowed([
   'dev',
   'prod'
@@ -96,7 +96,7 @@ You can require users to choose between a dev environment and a prod environment
 param environmentType string
 ```
 You can also set pricing tiers based on the environment type to avoid deploying expensive resources in the dev environment:
-```
+```bicep
 var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'
 var appServicePlanSku = (environmentType == 'prod') ? 'P2V3' : 'F1'
 ````
@@ -107,6 +107,7 @@ param location string = 'eastus2' // 👆🏼 Sets the deployment location to ea
 param storageAccountName string = 'ecommapp${uniqueString(resourceGroup().id)}' // 👆🏼 Generates a unique storage account name
 param appServiceAppName string = 'ecommapp${uniqueString(resourceGroup().id)}' // 👆🏼 Creates globally unique web app names 
 
+```bicep
 @allowed([
   'nonprod'
   'prod'
@@ -115,7 +116,6 @@ param environmentType string // 👆🏼 Allows users to choose between nonprod 
 
 var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS' // ✅ Automatically sets the SKU based on the environment type being prod or nonprod
 var appServicePlanSkuName = (environmentType == 'prod') ? 'P2v3' : 'F1' // ✅ Uses P2v3 (Premium) for prod and F1 (Free) for nonprod 
-
 ```
 
 

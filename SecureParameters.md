@@ -16,8 +16,8 @@ If you are working in an enterprise environment, you will likely need to secure 
 You can apply the ```@secure``` decorator to string and object parameters that contain secret values. This won't publish the values to the deployment logs in Azure. If you use the CLI and enter the values manually during deployment, they will be masked. 
 
 ## Example
-
-```@secure()
+```bicep
+@secure()
 param adminPasswordLogin string
 
 @secure()
@@ -107,7 +107,7 @@ It should look something like this:
 
 Copy it and paste it into the  **main.parameters.dev.json** file. 
 
-```
+```json
 "sqlServerAdministratorLogin": {
       "reference": {
         "keyVault": {

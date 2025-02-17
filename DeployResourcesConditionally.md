@@ -16,7 +16,7 @@ In Bicep, use ```if``` followed by a ```true/false``` condition to control resou
 <bold>false</bold> skips it. 🚫
 
 + The following example will deploy a storage acccount **only** if the ```deployStorageAccount``` is set to "true"
-```
+```bicep
 param deployStorageAccount bool
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = if (deployStorageAccount) {
@@ -32,7 +32,8 @@ You will notice that the true value isn't inside the Bicep code itself.  It's pr
 Think of ```deployStorageAccount``` as a variable that gets its value from outside the Bicep file.  You, or a deployment tool, set that value when you run the deployment.
 
 ## Conditions w/ expressions
-```@allowed([
+```bicep
+@allowed([
   'Development'
   'Production'
 ])
