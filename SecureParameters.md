@@ -1,6 +1,6 @@
 # Making Parameters Secure 🔑
 
-*This guide is building off the [Parameters Guide](./ParametersGuide.md) if you are following along.*
+*This guide is building off the [Modules Guide](./Modulesreadme.md) if you have been following along.*
 
 <h1> Introduction </h1>
 
@@ -156,3 +156,17 @@ In the Azure Portal, navigate to the resource group where the resources were dep
 + Use templates with parameters for values that might change between deployments.
 + Variables have the same value, so they don't really change between deployments. 
 ```+ param siteName string = 'mysite-${uniqueString(resourceGroup().id)}'``` shows that when a template is deployed to the same RG in the same subscription over and over again, the siteName parameters default value will always be the same. The only thing that will change will be a few characters at the end of the name. 
+
+## Conclusion
++ Secure Parameters with the ```@secure()``` decorator to ensure sensitive values (e.g. passwords, API keys) are not exposed during deployment/in logs.
++ **Avoid Storing Secrets in Parameter Files**. Use Azure Key Vault to store secrets and reference them in your parameter files. 
++ **Deploy with Secure Secrets** - Reference Azure Key Vault secrets in your main.parameters.dev.json file and deploy templates securely via Powershell. 
++ **Modules** are reusable components that encapsulate a set of related resources. They allow you to break down complex deployments into smaller, manageable pieces.
++ **Parameter** values can be overridden at deployment time. ✅
++ **Variables** cannot. 🚫
++ Limit lengths of parameters with ```@minLength()``` and ```@maxLength()```. (resource names)
++ Limit input value with ```@minValue()``` and ```@maxValue()```. (instance count)
++ Allowed values for ```environmentName``` (dev or prod)
+  + Be careful with ```@allowed decorator``` as it can block deployments if you don't keep up with the list.
+
++ [Loops & Conditions in Bicep](./LoopsConditions.md)

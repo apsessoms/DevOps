@@ -1,4 +1,5 @@
 # Introduction 
+*This guide is building off of the [Deploy Multiple Resources](./DeployMultipleResources.md)*
 
 With **conditions**, you can deploy resources only when specific constraints are in place. And with **loops**, you can deploy multiple resources that have similar properties.
 
@@ -113,3 +114,13 @@ We can see that there will be 2 resources created when we run the deployment. Th
 ## Verify the deployment
 Go to the Azure portal and navigate to your resource group. You should see the resources that were deployed by your Bicep file.
 + Select overview to see the resources that were deployed.
+
+## Conclusion
+
++ Use ```if``` **conditions** to deploy resources only when specific constraints are in place or environment contraints (e.g. enable SQL auditing only in production). ✅
++ **Leverage loops** to deploy multiple resources that have similar properties. ✅
++ **Validate** your Bicep file using ```az deployment group what-if``` to see what resources will be deployed before actually deploying them. ✅
+
+Next up, [Loop execution & nest loops](./LoopExecution&NestLoops.md)
+
+https://learn.microsoft.com/en-us/training/modules/build-flexible-bicep-templates-conditions-loops/6-use-loops-advanced

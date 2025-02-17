@@ -1,5 +1,7 @@
 # Introduction 
 
+*This guide is building off the [Modules Guide](./Modulesreadme.md) if you have been following along.*
+
 With **conditions**, you can deploy resources only when specific constraints are in place. And with **loops**, you can deploy multiple resources that have similar properties.
 
 ## Use Case
@@ -53,3 +55,7 @@ resource auditingSettings 'Microsoft.Sql/servers/auditingSettings@2024-05-01-pre
 
 +  ## Putting it altogether
 +  
+
+
+## Next up
+[Deploy Multiple Resources Using Loops in Bicep](./DeployMultipleResources.md)
