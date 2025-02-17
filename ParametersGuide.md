@@ -150,3 +150,5 @@ Understanding how to use parameters and variables effectively in Bicep templates
 + Use templates with parameters for values that might change between deployments.
 + Variables have the same value, so they don't really change between deployments. 
 ```+ param siteName string = 'mysite-${uniqueString(resourceGroup().id)}'``` shows that when a template is deployed to the same RG in the same subscription over and over again, the siteName parameters default value will always be the same. The only thing that will change will be a few characters at the end of the name. 
+
+Next up, we will be diving into [Reusable Templates](./ReusableTemplate.md) to learn how to create objects, tags, and arrays. This will show you how to restrict values for various parameters, which is helpful if you need to implement naming conventions or other restrictions.

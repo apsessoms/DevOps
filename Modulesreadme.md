@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Continuing on our journey with bicep, you previously learned how to [define parameters and variables](./ParametersGuide.md) in your Bicep files. In this guide, we will go over Bicep modules and how to use them to create smaller, reusable templates instead of having a long complicated file full of code
+*Continuing from[Reusable Templates](./ReusableTemplate.md)in your Bicep files.*
+
+This guide will cover:
 
 + Seperating code into seperate files for different resources: (Networking, VMs, Storage, etc.)
 + Using parameters between modules to be reused in different deployments.
@@ -127,3 +129,14 @@ The ```what-if``` command lets you preview what changes a Bicep template will ma
 
 You can see next to outputs that the app ServiceAppHostName was created and is named "ecomappv3w24tmhx5whg.azurewebsites.net" This was a result of adding ```output appServiceAppHostName string = appServiceApp.properties.defaultHostName```  to the bottom of the appService.bicep file.
 
+
+## Conclusion 
++ **Modules** are reusable components that encapsulate a set of related resources. They allow you to break down complex deployments into smaller, manageable pieces.
++ **Parameter** values can be overridden at deployment time. ✅
++ **Variables** cannot. 🚫
++ Limit lengths of parameters with ```@minLength()``` and ```@maxLength()```. (resource names)
++ Limit input value with ```@minValue()``` and ```@maxValue()```. (instance count)
++ Allowed values for ```environmentName``` (dev or prod)
+  + Be careful with ```@allowed decorator``` as it can block deployments if you don't keep up with the list.
+
+Next up, we will cover [Securing Parameters](./SecureParameters.md) in your Bicep files.
