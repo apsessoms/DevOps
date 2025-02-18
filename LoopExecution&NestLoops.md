@@ -179,4 +179,4 @@ resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for (
 - Try customizing subnet configurations.
 - Explore nesting additional resource types within loops.
 
-Next guide [Use Loops with Variables & Outputs](./UseLoopsWithVariables&Outputs)
+Next guide [Use Loops with Variables & Outputs](./UseLoopsWithVariables&Outputs.md)
