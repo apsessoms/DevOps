@@ -178,3 +178,5 @@ resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for (
 - Experiment with modifying batch sizes.
 - Try customizing subnet configurations.
 - Explore nesting additional resource types within loops.
+
+Next guide [Use Loops with Variables & Outputs](./UseLoopsWithVariables&Outputs)
