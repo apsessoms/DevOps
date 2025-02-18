@@ -1,6 +1,9 @@
 # Controlling Loop Execution and Nesting in Bicep
 
 ## Introduction
+
+*This guide is from [Deploy Resources Conditionally](./DeployResourcesConditionally.md) if you have been following along*
+
 Loops in Bicep allow for dynamic and efficient resource deployment. "By default, Azure Resource Manager (ARM) deploys resources in loops **in parallel** and in a **non-deterministic order**." 
 
 This is a fancy way of saying that Azure creates multiple resources at the same time instead (**in parallel**) and in no specific order (**non-deterministic**). This helps reduce deployment time.
