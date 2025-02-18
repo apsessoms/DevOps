@@ -152,7 +152,42 @@ output serverInfo array = [for i in range(0, length(locations)): {
 ```
 3. Save the file.
 
+## Deploy the Bicep Template
+1. Open the terminal in Visual Studio Code.
+2. Run the following command to deploy the Bicep template:
+```bash
+New-AzResourceGroupDeployment -Name main -TemplateFile main.bicep
+```
+⚠️ Please make sure you continue to use the same login & password previously used to avoid any issues with the deployment.
+
+## Verify the Deployment
+1. Go to the Azure portal and navigate to your resource group.
+2. Verify that the VNETs have been deployed to the regions specified in the *main.bicep* file.
+
+![alt text](https://i.imgur.com/bh4yF71.png)
+3. Click on the VNET to view the subnets that were created.
+
+![alt text](https://i.imgur.com/Mk6xCtG.png)
+
+You see that the subnets deployed have the names and IP addresses specified in the ```subnets``` parameters default value. 
+
+Next, run this command to see the FDQN of the servers:
+```bash
+Get-AzSqlServer -ResourceGroupName homelab-sqlserver-eastus2-rg
+```
+
+![alt text](https://i.imgur.com/CxJGkg0.png)
+
 ## Key Takeaways
 + **Variable Loops**: Turn simple input lists into Azure-compatible objects dynamically.
 + **Output Loops**: Retrieve details about deployed resources for future use.
 + **Scalability**: Easily add more subnets or storage accounts without changing the code.
++ **Copy Loops**: enables you to deploy multiple resources that are identical or have minor differences. 
+
+### What we covered
++ [Conditional Deployment](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/conditional-resource-deployment)
++ [Bicep Loops](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/loops)
++ [Resources](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/resource-declaration?tabs=azure-powershell)
++ [Modules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/modules)
++ [Variables](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/variables)
++ [Outputs](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/outputs)
