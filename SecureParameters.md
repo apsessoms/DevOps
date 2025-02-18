@@ -169,4 +169,4 @@ In the Azure Portal, navigate to the resource group where the resources were dep
 + Allowed values for ```environmentName``` (dev or prod)
   + Be careful with ```@allowed decorator``` as it can block deployments if you don't keep up with the list.
 
-+ [Loops & Conditions in Bicep](./LoopsConditions.md)
++ Next up [Loops & Conditions in Bicep](./Loops&Conditions.md.md)
