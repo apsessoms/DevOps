@@ -1,9 +1,7 @@
 # Controlling Loop Execution and Nesting in Bicep
+*This is building off of the [Deploying Resources Conditionally](./DeployResourcesConditionally.md) guide if you have been following along.*
 
 ## Introduction
-
-*This guide is from [Deploy Resources Conditionally](./DeployResourcesConditionally.md) if you have been following along*
-
 Loops in Bicep allow for dynamic and efficient resource deployment. "By default, Azure Resource Manager (ARM) deploys resources in loops **in parallel** and in a **non-deterministic order**." 
 
 This is a fancy way of saying that Azure creates multiple resources at the same time instead (**in parallel**) and in no specific order (**non-deterministic**). This helps reduce deployment time.
@@ -103,7 +101,9 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2024-05-01' = {
 ---
 
 ## Nested Loops
-Nested loops allow for complex deployments, such as creating **multiple networks**, each with **multiple subnets**.
+Nested loops allow for complex deployments, such as creating **multiple networks**, each with **multiple subnets**. A nseted loop is a loop inside another loop.
+
+For our ecommerce company, we need to deploy vnets in regions where we sell products. Each vnet will need different address space and two subnets. We can start with deploying a vnet in a loop.
 
 ### Step 1: Deploy Virtual Networks
 ```bicep
@@ -127,9 +127,11 @@ resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for (
   }
 }]
 ```
-💡 *Creates virtual networks for each region, ensuring unique address prefixes.*
+💡 *This loop creates virtual networks for each region we listed,& sets the address prefixe using the loop index - ensuring a unique prefix*
 
 ### Step 2: Add Nested Loops for Subnets
+We can add a nested loop to create two subnets within each vnet:
+
 ```bicep
 resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for (location, i) in locations : {
   name: 'vnet-${location}'
@@ -149,11 +151,13 @@ resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for (
   }
 }]
 ```
-💡 *Each virtual network gets two unique subnets.*
+💡 *The nested loop is using the ```range()``` function to create two seperate subnets.*
 
 ---
 
 ## Summary
+When you deploy the template, you should get the following vnets and subnets:
+
 | Virtual Network | Location | Address Prefix | Subnets |
 |----------------|----------|---------------|----------------|
 | vnet-westeurope | westeurope | 10.0.0.0/16 | 10.0.1.0/24, 10.0.2.0/24 |
@@ -164,19 +168,19 @@ resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for (
 
 ## Key Takeaways
 ✅ **Use `@batchSize` to control loop execution**
-- Default: **Parallel execution**
-- `@batchSize(n)`: **Batches** of `n`
-- `@batchSize(1)`: **Sequential execution**
+- **@batchSize(1)**: Deploys resources one at a time.
+- **@batchSize(2)**: Deploys resources in batches of 2. App1 & App2 will deploy together, then App3 will wait for App1 & App2 to finish.
 
 ✅ **Loops can be used inside resource properties** to define dynamic values.
 
-✅ **Nested loops allow complex deployments**, such as multiple virtual networks with multiple subnets.
+| Scenario | Without batchSize | with batchSize(1) |  
+|----------|-------------------|-------------------|
+| Deployment Speed | 🚀Fast (all at once) | Slower (one at a time) |
+| Order Guaranteed | ❌No | ✅Yes |
+| Throttling Risk?| ⚠️ Higher| 📉 Lower |
+| Best for? | Small, independent deployments | Large or dependment deployments |
 
 ---
 
 ## Next Steps
-- Experiment with modifying batch sizes.
-- Try customizing subnet configurations.
-- Explore nesting additional resource types within loops.
-
-Next guide [Use Loops with Variables & Outputs](./UseLoopsWithVariables&Outputs.md)
+Next up, [Use variable & output loops](./UseVariablesOutputsLoops.md). 
